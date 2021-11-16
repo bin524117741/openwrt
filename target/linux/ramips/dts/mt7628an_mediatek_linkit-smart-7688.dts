@@ -37,19 +37,49 @@
 		};
 	};
 
-	keys {
-		compatible = "gpio-keys";
+	// keys {
+	// 	compatible = "gpio-keys";
 
-		wps {
-			label = "reset";
-			gpios = <&gpio 38 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_WPS_BUTTON>;
-		};
-		spw {
+	// 	reset {
+	// 		label = "reset";
+	// 		gpios = <&gpio 38 GPIO_ACTIVE_LOW>;
+	// 		linux,code = <KEY_WPS_BUTTON>;
+	// 	};
+	// 	power {
+	// 		label = "power";
+	// 		gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
+	// 		linux,code = <KEY_WPS_BUTTON>;
+	// 	};
+	// };
+	gpio-keys-polled {
+        compatible = "gpio-keys-polled";
+        #address-cells = <1>;
+        #size-cells = <0>;
+        poll-interval = <20>;
+
+        reset {
+            label = "reset";
+            gpios = <&gpio 38 GPIO_ACTIVE_LOW>;
+            linux,code = <KEY_RESTART>;
+        };
+		power {
 			label = "power";
 			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_WPS_BUTTON>;
+			linux,code = <KEY_POWER>;
 		};
+    };
+	key_double{
+		compatible = "key-gpio";
+			key0 {
+				label = "key0";
+				gpios = <&gpio 38 GPIO_ACTIVE_LOW>;
+				linux,code = <KEY_WPS_BUTTON>;
+			};
+			key1 {
+				label = "key1";
+				gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
+				linux,code = <KEY_WPS_BUTTON>;
+			};
 	};
 };
 

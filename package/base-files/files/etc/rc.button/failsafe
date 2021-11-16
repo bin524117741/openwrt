@@ -1,5 +1,5 @@
 #!/bin/sh
-
+echo "failsafe" > /dev/console
 [ "${TYPE}" = "switch" ] || echo ${BUTTON} > /tmp/failsafe_button
 
 return 0
