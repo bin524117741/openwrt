@@ -35,6 +35,10 @@
 			label = "orange:wifi";
 			gpios = <&gpio 44 GPIO_ACTIVE_LOW>;
 		};
+		led_power: power {
+			label = "orange:power";
+			gpios = <&gpio 43 GPIO_ACTIVE_LOW>;
+		};
 	};
 
 	// keys {
@@ -177,13 +181,13 @@
 &i2s {
 	status = "okay";
 };
-&uart1 {
-	status = "okay";
-};
+// &uart1 {
+// 	status = "okay";
+// };
 
-&uart2 {
-	status = "okay";
-};
+// &uart2 {
+// 	status = "okay";
+// };
 
 &pwm {
 	status = "okay";

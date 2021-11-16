@@ -1,0 +1,19 @@
+#!/bin/sh /etc/rc.common
+START=96 
+STOP=96
+
+start()  {
+    echo "4G call Start" >> /dev/ttyS0
+	#/usr/bin/quectel-CM &
+}
+
+stop() {
+    echo "4G call Start" >> /dev/ttyS0
+    #killall quectel-CM
+}
+
+restart() {
+	stop
+	sleep 1
+	start
+}

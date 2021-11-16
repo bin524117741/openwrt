@@ -169,7 +169,7 @@
 			pinctrl-0 = <&uart0_pins>;
 		};
 
-		uart1: uart1@d00 {
+		uartlite1: uartlite1@d00 {
 			compatible = "ns16550a";
 			reg = <0xd00 0x100>;
 
@@ -187,8 +187,6 @@
 
 			pinctrl-names = "default";
 			pinctrl-0 = <&uart1_pins>;
-
-			status = "disabled";
 		};
 
 		uart2: uart2@e00 {
@@ -209,8 +207,6 @@
 
 			pinctrl-names = "default";
 			pinctrl-0 = <&uart2_pins>;
-
-			status = "disabled";
 		};
 
 		pwm: pwm@5000 {
