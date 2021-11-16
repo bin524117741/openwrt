@@ -1,4 +1,11 @@
 # Put your custom commands here that should be executed once
 # the system init finished. By default this file does nothing.
-
+mount -t vfat /dev/mmcblk0 /mnt/
+amixer sset "Headphone" 90
+amixer sset "Speaker" 90
+amixer sset "Left Output Mixer PCM" on
+amixer sset "Right Output Mixer PCM" on
+amixer sset "Left Input Mixer Boost" on
+amixer sset "Right Input Mixer Boost" on
+amixer sset "ALC Function" "Stereo"
 exit 0

@@ -66,6 +66,10 @@ define Package/base-files/conffiles
 /etc/shinit
 /etc/sysctl.conf
 /etc/sysupgrade.conf
+/etc/wifi_sta_init
+/etc/asound.conf
+/etc/asound.conf.alsa
+/etc/asound.conf.pulse
 $(call $(TARGET)/conffiles)
 endef
 
@@ -174,6 +178,7 @@ define Package/base-files/install
 		$(1)/tmp \
 		$(1)/usr/lib \
 		$(1)/usr/bin \
+		$(1)/usr/sound \
 		$(1)/sys \
 		$(1)/www \
 		$(1)/root

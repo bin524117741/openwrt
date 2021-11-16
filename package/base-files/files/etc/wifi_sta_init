@@ -1,0 +1,37 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+#开启系统wifi功能
+uci set wireless.@wifi-device[0].disabled=0
+uci commit wireless
+wifi up
+#创建 wwan 网络接口
+uci set network.wwan=interface
+uci set network.wwan.proto=dhcp
+uci commit network
+#连接上级路由节点 (我的上级路由ssid:"SampleAP")
+uci set wireless.radio0.channel=11
+uci set wireless.@wifi-iface[0].network=wwan
+uci set wireless.@wifi-iface[0].mode=ap
+uci set wireless.@wifi-iface[0].ssid=SampleAP
+uci set wireless.@wifi-iface[0].encryption=psk2
+uci set wireless.@wifi-iface[0].key=12345678
+uci commit wireless
+wifi down
+wifi up
+#设置lan口IP段，设置网关
+uci set network.lan.ipaddr=192.168.10.1
+uci set network.lan.gateway=192.168.3.1
+uci set network.lan.dns=8.8.8.8
+uci commit network
+wifi down
+wifi up
+#开启本地DHCP服务器
+uci set dhcp.lan.ignore="0"
+uci set dhcp.lan.ra_management="1"
+uci commit dhcp
+#防火墙修改
+#uci set firwall.@zone[0].forward=ACCEPT
+#uci set firwall.@zone[0].network="lan"
+#uci set firwall.@zone[1].forward=ACCEPT
+#uci set firwall.@zone[1].network="wan wwan"
